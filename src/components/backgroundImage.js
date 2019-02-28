@@ -1,12 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql, StaticQuery } from 'gatsby'
-
 import BackgroundImage from 'gatsby-background-image'
 
 const BackgroundSection = ({ children, className, src }) => (
     <StaticQuery query={graphql`
       query {
-        image: file(relativePath: { eq: "name-of-file.jpg" }) {
+        sampleBG: file(relativePath: { eq: "sample-image2.jpg" }) {
           childImageSharp {
             fluid(quality: 100, maxWidth: 1920) {
               ...GatsbyImageSharpFluid
@@ -30,5 +30,10 @@ const BackgroundSection = ({ children, className, src }) => (
      }
     />
 )
+
+BackgroundSection.propTypes = {
+  src: PropTypes.string.isRequired,
+  className: PropTypes.string
+}
 
 export default BackgroundSection;

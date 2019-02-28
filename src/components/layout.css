@@ -1,0 +1,14 @@
+.img-container{
+  display: flex;
+}
+.img-container div{
+  width: 100%;
+}
+.image{
+  height: 100%;
+}
+
+.backgroundImage{
+  width: 100%;
+  height: 100%
+}

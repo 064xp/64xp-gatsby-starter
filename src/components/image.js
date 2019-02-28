@@ -1,15 +1,14 @@
-import React from "react"
+import React from 'react'
+import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-class Image extends React.Component {
-  render () {
-    const { src } = this.props;
-    return(
-      <StaticQuery
+const Image = (props) => {
+  return (
+    <StaticQuery
         query={graphql`
           query {
-            imageName: file(relativePath: { eq: "path-to-image.jpg" }) {
+            sampleImage: file(relativePath: { eq: "sample-image.jpg" }) {
               childImageSharp {
                 fluid(maxWidth: 800) {
                   ...GatsbyImageSharpFluid
@@ -19,10 +18,14 @@ class Image extends React.Component {
 
           }
         `}
-        render={data => <Img className={this.props.className} fluid={data[src].childImageSharp.fluid} />}
+        render={data => <Img className={props.className} fluid={data[props.src].childImageSharp.fluid} />}
       />
-    );
-  }
+  )
 }
 
-export default Image;
+Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  className: PropTypes.string
+}
+
+export default Image
